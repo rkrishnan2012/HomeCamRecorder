@@ -1,4 +1,5 @@
 #include <iostream>
+#include <thread>
 
 extern "C" {
     #include <libavformat/avformat.h>
@@ -14,8 +15,9 @@ extern "C" {
  */
 using namespace std;
 
+std::atomic<bool> kill_threads;
 
-void dump_stream_info(const string &input_url) {
+void copy_streams(const string &input_url) {
     char c_input_url[input_url.size() + 1];
     input_url.copy(c_input_url, input_url.size() + 1);
 
@@ -41,15 +43,42 @@ void dump_stream_info(const string &input_url) {
         }
     }
 
-    cout << "Audio stream at index: " << audio_stream_idx << endl;
-    cout << "Video stream at index: " << video_stream_idx << endl;
+    av_read_play(format_context);
+
+    AVPacket *packet = av_packet_alloc();
+    int ret = 0;
+    int frame_num = 0;
+
+    while(!kill_threads) {
+        ret = av_read_frame(format_context, packet);
+        if (ret != 0) {
+            cerr << "Failed to read frame number " << frame_num << ". Ret = " << ret << "." << endl;
+            return;
+        }
+        frame_num++;
+        if (packet->stream_index == video_stream_idx) {
+            cout << "(Video) Frame " << frame_num << endl;
+        } else if (packet->stream_index == audio_stream_idx) {
+            cout << "(Audio) Frame " << frame_num << endl;
+        }
+    }
+}
+
+void signalHandler( int signum ) {
+    if (signum != SIGINT) return;
+    cout << "Interrupt signal (" << signum << ") received.\n";
+    kill_threads = true;
 }
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    signal(SIGINT, signalHandler);
+
+    std::cout << "HomeCam v0" << std::endl;
     avformat_network_init();
 
-    dump_stream_info("rtsp://admin:2147483648@10.0.9.48/live/ch0");
+    thread camera1(copy_streams, "rtsp://admin:2147483648@10.0.9.48/live/ch0");
+    camera1.join();
+
     return 0;
 }
 
