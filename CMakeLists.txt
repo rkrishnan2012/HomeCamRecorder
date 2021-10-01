@@ -28,5 +28,17 @@ find_library(RTMP_LIBRARY rtmp)
 find_library(DRM_LIBRARY drm)
 
 add_executable(HomeCamRecorder main.cpp)
-target_include_directories(HomeCamRecorder PRIVATE ${AVCODEC_INCLUDE_DIR} ${AVFORMAT_INCLUDE_DIR} ${AVUTIL_INCLUDE_DIR} ${AVDEVICE_INCLUDE_DIR} ${SWRESAMPLE_INCLUDE_DIR})
-target_link_libraries(HomeCamRecorder PRIVATE ${AVFORMAT_LIBRARY} ${AVCODEC_LIBRARY} ${AVUTIL_LIBRARY} ${AVDEVICE_LIBRARY} ${SWRESAMPLE_LIBRARY} ${MATH_LIBRARY} ${Z_LIBRARY} ${P_THREAD_LIBRARY} ${X264_LIBRARY} ${X265_LIBRARY} ${RTMP_LIBRARY} ${DRM_LIBRARY})
+target_include_directories(HomeCamRecorder PRIVATE ${AVCODEC_INCLUDE_DIR}
+        ${AVFORMAT_INCLUDE_DIR} ${AVUTIL_INCLUDE_DIR} ${AVDEVICE_INCLUDE_DIR} ${SWRESAMPLE_INCLUDE_DIR})
+target_link_libraries(HomeCamRecorder PRIVATE
+        ${AVFORMAT_LIBRARY} ${AVCODEC_LIBRARY}
+        ${AVUTIL_LIBRARY} ${AVDEVICE_LIBRARY} ${SWRESAMPLE_LIBRARY}
+        ${MATH_LIBRARY} ${Z_LIBRARY} ${P_THREAD_LIBRARY} ${X264_LIBRARY}
+        ${X265_LIBRARY})
+
+if(DRM_LIBRARY)
+    target_link_libraries(HomeCamRecorder ${DRM_LIBRARY})
+endif()
+if(RTMP_LIBRARY)
+    target_link_libraries(HomeCamRecorder ${RTMP_LIBRARY})
+endif()
