@@ -18,4 +18,4 @@ find_library(AVDEVICE_LIBRARY avdevice)
 
 add_executable(HomeCamRecorder main.cpp)
 target_include_directories(HomeCamRecorder PRIVATE ${AVCODEC_INCLUDE_DIR} ${AVFORMAT_INCLUDE_DIR} ${AVUTIL_INCLUDE_DIR} ${AVDEVICE_INCLUDE_DIR})
-target_link_libraries(HomeCamRecorder PRIVATE ${AVCODEC_LIBRARY} ${AVFORMAT_LIBRARY} ${AVUTIL_LIBRARY} ${AVDEVICE_LIBRARY})
+target_link_libraries(HomeCamRecorder PRIVATE ${AVFORMAT_LIBRARY} ${AVCODEC_LIBRARY} ${AVUTIL_LIBRARY} ${AVDEVICE_LIBRARY})
