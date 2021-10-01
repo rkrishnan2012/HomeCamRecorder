@@ -1,3 +1,5 @@
+set(CMAKE_FIND_DEBUG_MODE TRUE)
+
 cmake_minimum_required(VERSION 3.20)
 project(HomeCamRecorder)
 
