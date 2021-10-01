@@ -1,7 +1,9 @@
 #include <iostream>
+
+extern "C" {
 #include <libavformat/avformat.h>
 #include <libavformat/avio.h>
-
+}
 
 /**
  * rtsp://admin:2147483648@10.0.9.48/live/ch0 -> rtmp://localhost/flv/1
@@ -17,6 +19,7 @@ void dump_stream_info(const string &input_url) {
     input_url.copy(c_input_url, input_url.size() + 1);
 
     AVFormatContext *format_context = avformat_alloc_context();
+
     if (avformat_open_input(&format_context, c_input_url, nullptr, nullptr) != 0) {
         cerr << "Failed to open input." << endl;
         return;
@@ -24,6 +27,7 @@ void dump_stream_info(const string &input_url) {
 
     if (avformat_find_stream_info(format_context, nullptr) < 0) {
         cerr << "Failed to find stream info." << endl;
+        return;
     }
 
     int video_stream_idx = -1;
