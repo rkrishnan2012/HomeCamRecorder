@@ -27,7 +27,7 @@ find_library(X265_LIBRARY x265)
 find_library(RTMP_LIBRARY rtmp)
 find_library(DRM_LIBRARY drm)
 
-add_executable(HomeCamRecorder main.cpp)
+add_executable(HomeCamRecorder main.cpp RotatingFileMuxer.cpp FLVMuxer.cpp Muxer.h MotionDetector.cpp MotionDetector.h)
 target_include_directories(HomeCamRecorder PRIVATE ${AVCODEC_INCLUDE_DIR}
         ${AVFORMAT_INCLUDE_DIR} ${AVUTIL_INCLUDE_DIR} ${AVDEVICE_INCLUDE_DIR} ${SWRESAMPLE_INCLUDE_DIR})
 
