@@ -16,6 +16,12 @@ find_library(AVUTIL_LIBRARY avutil)
 find_path(AVDEVICE_INCLUDE_DIR libavdevice/avdevice.h)
 find_library(AVDEVICE_LIBRARY avdevice)
 
+find_path(SWRESAMPLE_INCLUDE_DIR libswresample/swresample.h)
+find_library(SWRESAMPLE_LIBRARY swresample)
+
+find_library(MATH_LIBRARY m)
+find_library(Z_LIBRARY z)
+
 add_executable(HomeCamRecorder main.cpp)
-target_include_directories(HomeCamRecorder PRIVATE ${AVCODEC_INCLUDE_DIR} ${AVFORMAT_INCLUDE_DIR} ${AVUTIL_INCLUDE_DIR} ${AVDEVICE_INCLUDE_DIR})
-target_link_libraries(HomeCamRecorder PRIVATE ${AVFORMAT_LIBRARY} ${AVCODEC_LIBRARY} ${AVUTIL_LIBRARY} ${AVDEVICE_LIBRARY})
+target_include_directories(HomeCamRecorder PRIVATE ${AVCODEC_INCLUDE_DIR} ${AVFORMAT_INCLUDE_DIR} ${AVUTIL_INCLUDE_DIR} ${AVDEVICE_INCLUDE_DIR} ${SWRESAMPLE_INCLUDE_DIR})
+target_link_libraries(HomeCamRecorder PRIVATE ${AVFORMAT_LIBRARY} ${AVCODEC_LIBRARY} ${AVUTIL_LIBRARY} ${AVDEVICE_LIBRARY} ${SWRESAMPLE_LIBRARY} ${MATH_LIBRARY} ${Z_LIBRARY})
