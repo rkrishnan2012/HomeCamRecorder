@@ -109,7 +109,7 @@ void run(int index) {
     bool saw_key_frame = false;
     int ret;
 
-    auto motion_detector = MotionDetector();
+    //auto motion_detector = MotionDetector();
 
     while (!kill_threads && !source.needs_restart) {
         AVPacket *packet = av_packet_alloc();
@@ -139,7 +139,7 @@ void run(int index) {
         for (Muxer *muxer: source.muxers)
             muxer->send_packet(packet);
         if (packet->stream_index == video_stream_idx) {
-            motion_detector.send_packet(packet);
+            //motion_detector.send_packet(packet);
         }
 
         if (packet->stream_index == video_stream_idx) source.video_frames_read++;
@@ -150,7 +150,7 @@ void run(int index) {
 
     for (Muxer *muxer: source.muxers)
         muxer->release();
-    motion_detector.release();
+    //motion_detector.release();
     avformat_close_input(&input_ctx);
 
     if (source.needs_restart) {

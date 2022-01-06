@@ -26,6 +26,11 @@ void MotionDetector::send_packet(AVPacket *packet) {
                 }
                 leading_zero_bits++;
                 cout << "   LeadingZeroBits: " << leading_zero_bits << endl;
+                cout << "      ";
+                for (int b = leading_zero_bits; b < 2 * leading_zero_bits; b++) {
+                    cout << (data[i] & (1 << (7 - b)));
+                }
+
             }
             cout << "   Header: " << forbidden << " " << ref_idc << " " << unit_type << endl;
         }
