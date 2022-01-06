@@ -60,10 +60,10 @@ std::vector<CameraSource> cameras = { // NOLINT(cert-err58-cpp)
         CameraSource("Front door", "rtsp://admin:2147483648@10.0.9.48/live/ch0",
                      create_muxers("/home/rohit/Recordings/front_door", "flv",
                                    "rtmp://localhost/flv/1")),
-        CameraSource("Back yard", "rtsp://admin:2147483648@10.0.9.26/live/ch",
+        CameraSource("Back yard", "rtsp://admin:2147483648@10.0.9.26/live/ch0",
                      create_muxers("/home/rohit/Recordings/back_yard", "flv",
                                    "rtmp://localhost/flv/2")),
-        CameraSource("Driveway", "rtsp://admin:2147483648@10.0.9.32/live/ch",
+        CameraSource("Driveway", "rtsp://admin:2147483648@10.0.9.32/live/ch0",
                      create_muxers("/home/rohit/Recordings/driveway", "flv",
                                    "rtmp://localhost/flv/3"))
 };
@@ -200,11 +200,13 @@ int main() {
 
     thread camera1(run, 0);
     thread camera2(run, 1);
+    thread camera3(run, 2);
     thread frame_rate_monitor(monitor_frame_rates);
 
     frame_rate_monitor.join();
     camera1.join();
     camera2.join();
+    camera3.join();
 
     return 0;
 }
