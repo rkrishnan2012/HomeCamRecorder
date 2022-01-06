@@ -62,7 +62,10 @@ std::vector<CameraSource> cameras = { // NOLINT(cert-err58-cpp)
                                    "rtmp://localhost/flv/1")),
         CameraSource("Back yard", "rtsp://admin:2147483648@10.0.9.26/live/ch",
                      create_muxers("/home/rohit/Recordings/back_yard", "flv",
-                                   "rtmp://localhost/flv/2"))
+                                   "rtmp://localhost/flv/2")),
+        CameraSource("Driveway", "rtsp://admin:2147483648@10.0.9.32/live/ch",
+                     create_muxers("/home/rohit/Recordings/driveway", "flv",
+                                   "rtmp://localhost/flv/3"))
 };
 
 int interrupt_callback(void *ptr) {
