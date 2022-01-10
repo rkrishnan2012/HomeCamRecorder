@@ -89,17 +89,17 @@ void run(int index) {
         input_ctx->interrupt_callback = callback;
 
         if (avformat_open_input(&input_ctx, source.url.c_str(), nullptr, nullptr) < 0) {
-             err << "(" << source.name << ") Failed to open " << source.url << endl;
+            cerr << "(" << source.name << ") Failed to open " << source.url << endl;
             source.needs_restart = true;
-            avformat_free_context(&input_ctx);
+            avformat_free_context(input_ctx);
             avformat_close_input(&input_ctx);
             continue;
         }
 
         if (avformat_find_stream_info(input_ctx, nullptr) < 0) {
-             err << "(" << source.name << ") Failed to find stream info." << endl;
+            cerr << "(" << source.name << ") Failed to find stream info." << endl;
             source.needs_restart = true;
-            avformat_free_context(&input_ctx);
+            avformat_free_context(input_ctx);
             avformat_close_input(&input_ctx);
             continue;
         }
@@ -122,7 +122,7 @@ void run(int index) {
             source.last_frame_read_start_time = system_clock::now();
             ret = av_read_frame(input_ctx, packet);
             if (ret != 0) {
-                err << "(" << source.name << ") Failed to read frame number " << (source.video_frames_read + source.audio_frames_read)
+                cerr << "(" << source.name << ") Failed to read frame number " << (source.video_frames_read + source.audio_frames_read)
                     << ". Error = " << av_err2str(ret) << "." << endl;
                 source.needs_restart = true;
                 break;
@@ -151,13 +151,13 @@ void run(int index) {
             if (packet->stream_index == video_stream_idx) source.video_frames_read++;
             if (packet->stream_index == audio_stream_idx) source.audio_frames_read++;
 
-            av_packet_free(packet);
+            av_packet_free(&packet);
         }
 
         for (Muxer *muxer: source.muxers)
             muxer->release();
         //motion_detector.release();
-        avformat_free_context(&input_ctx);
+        avformat_free_context(input_ctx);
         avformat_close_input(&input_ctx);
 
         if (source.needs_restart) {
@@ -165,7 +165,7 @@ void run(int index) {
         } else {
             cout << "Quitting " << source.name << endl;
         }
-    } while(source.needs_restart)
+    } while(source.needs_restart);
 }
 
 void monitor_frame_rates() {
