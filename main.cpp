@@ -83,85 +83,89 @@ void run(int index) {
     CameraSource &source = cameras.at(index);
     source.last_frame_read_start_time = system_clock::now();
     source.needs_restart = false;
+    do {
+        AVFormatContext *input_ctx = avformat_alloc_context();
+        AVIOInterruptCB callback = {interrupt_callback, (void *) &index};
+        input_ctx->interrupt_callback = callback;
 
-    AVFormatContext *input_ctx = avformat_alloc_context();
-    AVIOInterruptCB callback = {interrupt_callback, (void *) &index};
-    input_ctx->interrupt_callback = callback;
-
-    if (avformat_open_input(&input_ctx, source.url.c_str(), nullptr, nullptr) < 0) {
-        cerr << "Failed to open " << source.url << endl;
-        source.needs_restart = true;
-        avformat_close_input(&input_ctx);
-        run(index);
-        return;
-    }
-
-    if (avformat_find_stream_info(input_ctx, nullptr) < 0) {
-        cerr << "Failed to find stream info." << endl;
-        return;
-    }
-
-    AVCodec *input_video_codec;
-    int video_stream_idx = av_find_best_stream(input_ctx, AVMEDIA_TYPE_VIDEO, -1, -1, &input_video_codec, 0);
-
-    AVCodec *input_audio_codec;
-    int audio_stream_idx = av_find_best_stream(input_ctx, AVMEDIA_TYPE_AUDIO, -1, -1, &input_audio_codec, 0);
-
-    av_read_play(input_ctx);
-
-    bool saw_key_frame = false;
-    int ret;
-
-    //auto motion_detector = MotionDetector();
-
-    while (!kill_threads && !source.needs_restart) {
-        AVPacket *packet = av_packet_alloc();
-        source.last_frame_read_start_time = system_clock::now();
-        ret = av_read_frame(input_ctx, packet);
-        if (ret != 0) {
-            cerr << "Failed to read frame number " << (source.video_frames_read + source.audio_frames_read)
-                 << ". Error = " << av_err2str(ret) << "." << endl;
+        if (avformat_open_input(&input_ctx, source.url.c_str(), nullptr, nullptr) < 0) {
+             err << "(" << source.name << ") Failed to open " << source.url << endl;
             source.needs_restart = true;
-            break;
-        }
-        if (!saw_key_frame && (packet->stream_index != video_stream_idx || !(packet->flags & AV_PKT_FLAG_KEY))) {
-            av_packet_unref(packet);
+            avformat_free_context(&input_ctx);
+            avformat_close_input(&input_ctx);
             continue;
         }
-        saw_key_frame = true;
 
-        for (Muxer *muxer: source.muxers) {
-            if (muxer->should_add_streams) {
-                auto input_video_stream = input_ctx->streams[video_stream_idx];
-                muxer->add_stream(input_video_stream, input_video_codec, false);
-                auto input_audio_stream = input_ctx->streams[audio_stream_idx];
-                muxer->add_stream(input_audio_stream, input_audio_codec, true);
+        if (avformat_find_stream_info(input_ctx, nullptr) < 0) {
+             err << "(" << source.name << ") Failed to find stream info." << endl;
+            source.needs_restart = true;
+            avformat_free_context(&input_ctx);
+            avformat_close_input(&input_ctx);
+            continue;
+        }
+
+        AVCodec *input_video_codec;
+        int video_stream_idx = av_find_best_stream(input_ctx, AVMEDIA_TYPE_VIDEO, -1, -1, &input_video_codec, 0);
+
+        AVCodec *input_audio_codec;
+        int audio_stream_idx = av_find_best_stream(input_ctx, AVMEDIA_TYPE_AUDIO, -1, -1, &input_audio_codec, 0);
+
+        av_read_play(input_ctx);
+
+        bool saw_key_frame = false;
+        int ret;
+
+        //auto motion_detector = MotionDetector();
+
+        while (!kill_threads && !source.needs_restart) {
+            AVPacket *packet = av_packet_alloc();
+            source.last_frame_read_start_time = system_clock::now();
+            ret = av_read_frame(input_ctx, packet);
+            if (ret != 0) {
+                err << "(" << source.name << ") Failed to read frame number " << (source.video_frames_read + source.audio_frames_read)
+                    << ". Error = " << av_err2str(ret) << "." << endl;
+                source.needs_restart = true;
+                break;
             }
+            if (!saw_key_frame && (packet->stream_index != video_stream_idx || !(packet->flags & AV_PKT_FLAG_KEY))) {
+                av_packet_unref(packet);
+                continue;
+            }
+            saw_key_frame = true;
+
+            for (Muxer *muxer: source.muxers) {
+                if (muxer->should_add_streams) {
+                    auto input_video_stream = input_ctx->streams[video_stream_idx];
+                    muxer->add_stream(input_video_stream, input_video_codec, false);
+                    auto input_audio_stream = input_ctx->streams[audio_stream_idx];
+                    muxer->add_stream(input_audio_stream, input_audio_codec, true);
+                }
+            }
+
+            for (Muxer *muxer: source.muxers)
+                muxer->send_packet(packet);
+            if (packet->stream_index == video_stream_idx) {
+                //motion_detector.send_packet(packet);
+            }
+
+            if (packet->stream_index == video_stream_idx) source.video_frames_read++;
+            if (packet->stream_index == audio_stream_idx) source.audio_frames_read++;
+
+            av_packet_free(packet);
         }
 
         for (Muxer *muxer: source.muxers)
-            muxer->send_packet(packet);
-        if (packet->stream_index == video_stream_idx) {
-            //motion_detector.send_packet(packet);
+            muxer->release();
+        //motion_detector.release();
+        avformat_free_context(&input_ctx);
+        avformat_close_input(&input_ctx);
+
+        if (source.needs_restart) {
+            cout << "Restarting " << source.name << endl;
+        } else {
+            cout << "Quitting " << source.name << endl;
         }
-
-        if (packet->stream_index == video_stream_idx) source.video_frames_read++;
-        if (packet->stream_index == audio_stream_idx) source.audio_frames_read++;
-
-        av_packet_unref(packet);
-    }
-
-    for (Muxer *muxer: source.muxers)
-        muxer->release();
-    //motion_detector.release();
-    avformat_close_input(&input_ctx);
-
-    if (source.needs_restart) {
-        cout << "Restarting " << source.name << endl;
-        run(index);
-    } else {
-        cout << "Quitting " << source.name << endl;
-    }
+    } while(source.needs_restart)
 }
 
 void monitor_frame_rates() {
@@ -176,8 +180,9 @@ void monitor_frame_rates() {
                  << " Audio frames read: " << source.audio_frames_read
                  << " Rate: " << rate << endl;
 
-            if (duration_cast<milliseconds>(now - source.last_frame_read_start_time).count() > TIMEOUT_MILLI) {
-                cout << "Camera (" << source.name << ") has died." << endl;
+            long seconds_since_last_frame = duration_cast<milliseconds>(now - source.last_frame_read_start_time).count()
+            if (seconds_since_last_frame > TIMEOUT_MILLI) {
+                cout << "Camera (" << source.name << ") has died. Last frame was " << seconds_since_last_frame << " seconds ago." << endl;
                 source.last_frame_read_start_time = now;
                 source.needs_restart = true;
             }
