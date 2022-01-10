@@ -90,7 +90,7 @@ void run(int index) {
         input_ctx->interrupt_callback = callback;
 
         int ret;
-        ret = avformat_open_input(&input_ctx, source.url.c_str(), nullptr, nullptr)
+        ret = avformat_open_input(&input_ctx, source.url.c_str(), nullptr, nullptr);
         if (ret < 0) {
             cerr << "(" << source.name << ") Failed to open " << source.url 
                  << ". Error = " << av_err2str(ret) << endl;
@@ -102,7 +102,7 @@ void run(int index) {
             continue;
         }
 
-        ret = avformat_find_stream_info(input_ctx, nullptr)
+        ret = avformat_find_stream_info(input_ctx, nullptr);
         if (ret < 0) {
             cerr << "(" << source.name << ") Failed to find stream info"
                  << ". Error = " << av_err2str(ret) << endl;;
