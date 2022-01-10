@@ -121,7 +121,6 @@ void run(int index) {
         av_read_play(input_ctx);
 
         bool saw_key_frame = false;
-        int ret;
 
         //auto motion_detector = MotionDetector();
 
