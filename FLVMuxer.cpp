@@ -2,6 +2,7 @@
 
 FLVMuxer::FLVMuxer(const string &output_url) {
     this->output_url = output_url;
+    cerr << "(FLVMuxer) Constructor calling init." << endl;
     init();
 }
 
@@ -51,7 +52,6 @@ void FLVMuxer::send_packet(AVPacket *packet) {
         if (ret == AVERROR_EOF) {
             cerr << "Re-starting FLV muxer." << endl;
             release();
-            init();
         }
         return;
     }
