@@ -6,6 +6,7 @@ FLVMuxer::FLVMuxer(const string &output_url) {
 }
 
 void FLVMuxer::init() {
+    cerr << "(FLVMuxer) allocating context." << endl;
     output_ctx = avformat_alloc_context();
 
     output_format = av_guess_format("flv", nullptr, nullptr);
@@ -15,10 +16,12 @@ void FLVMuxer::init() {
     }
 
     if (!(output_ctx->oformat->flags & AVFMT_NOFILE)) {
+        cerr << "(FLVMuxer) opening output file." << endl;
         if (avio_open(&output_ctx->pb, output_url.c_str(), AVIO_FLAG_WRITE) < 0) {
             cerr << "FLVMuxer failed to open output file." << endl;
             return;
         }
+        cerr << "(FLVMuxer) Done opening output file." << endl;
     }
 }
 
@@ -67,10 +70,15 @@ void FLVMuxer::send_packet(AVPacket *packet) {
 }
 
 void FLVMuxer::release() {
+    cerr << "(FLVMuxer) writing trailer." << endl;
     av_write_trailer(output_ctx);
-    if (output_ctx && !(output_ctx->oformat->flags & AVFMT_NOFILE))
+    if (output_ctx && !(output_ctx->oformat->flags & AVFMT_NOFILE)) {
+        cerr << "(FLVMuxer) closing output context." << endl;
         avio_closep(&output_ctx->pb);
+    }
+    cerr << "(FLVMuxer) freeing context." << endl;
     avformat_free_context(output_ctx);
     Muxer::release();
+    cerr << "(FLVMuxer) calling init." << endl;
     init();
 }

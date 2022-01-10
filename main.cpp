@@ -128,6 +128,7 @@ void run(int index) {
                 break;
             }
             if (!saw_key_frame && (packet->stream_index != video_stream_idx || !(packet->flags & AV_PKT_FLAG_KEY))) {
+                cerr << "(" << source.name << ") Waiting for keyframe. Ignoring frame." << endl;
                 av_packet_unref(packet);
                 continue;
             }
@@ -154,16 +155,20 @@ void run(int index) {
             av_packet_free(&packet);
         }
 
+        cerr << "(" << source.name << ") Releasing muxers." << endl;
         for (Muxer *muxer: source.muxers)
             muxer->release();
         //motion_detector.release();
+        
+        cerr << "(" << source.name << ") Freeing input context." << endl;
         avformat_free_context(input_ctx);
+        cerr << "(" << source.name << ") closing input." << endl;
         avformat_close_input(&input_ctx);
 
         if (source.needs_restart) {
-            cout << "Restarting " << source.name << endl;
+            cout << "(" << source.name << ") Restarting " << source.name << endl;
         } else {
-            cout << "Quitting " << source.name << endl;
+            cout << "(" << source.name << ") Quitting " << source.name << endl;
         }
     } while(source.needs_restart);
 }
