@@ -93,6 +93,8 @@ void run(int index) {
             source.needs_restart = true;
             avformat_free_context(input_ctx);
             avformat_close_input(&input_ctx);
+            cerr << "(" << source.name << ") Sleeping for 10s before restarting." << source.url << endl;
+            sleep(10);
             continue;
         }
 
