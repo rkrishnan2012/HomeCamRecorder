@@ -180,7 +180,7 @@ void monitor_frame_rates() {
                  << " Audio frames read: " << source.audio_frames_read
                  << " Rate: " << rate << endl;
 
-            long seconds_since_last_frame = duration_cast<milliseconds>(now - source.last_frame_read_start_time).count()
+            long seconds_since_last_frame = duration_cast<milliseconds>(now - source.last_frame_read_start_time).count();
             if (seconds_since_last_frame > TIMEOUT_MILLI) {
                 cout << "Camera (" << source.name << ") has died. Last frame was " << seconds_since_last_frame << " seconds ago." << endl;
                 source.last_frame_read_start_time = now;
