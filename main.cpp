@@ -160,8 +160,6 @@ void run(int index) {
             muxer->release();
         //motion_detector.release();
         
-        cerr << "(" << source.name << ") Freeing input context." << endl;
-        avformat_free_context(input_ctx);
         cerr << "(" << source.name << ") closing input." << endl;
         avformat_close_input(&input_ctx);
 
