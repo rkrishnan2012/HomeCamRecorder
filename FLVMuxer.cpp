@@ -17,7 +17,7 @@ void FLVMuxer::init() {
 
     if (!(output_ctx->oformat->flags & AVFMT_NOFILE)) {
         cerr << "(FLVMuxer) opening output file: " << output_url.c_str() << endl;
-        int error = avio_open(&output_ctx->pb, output_url.c_str(), AVIO_FLAG_WRITE);
+        long error = avio_open(&output_ctx->pb, output_url.c_str(), AVIO_FLAG_WRITE);
         if (error < 0) {
             cerr << "FLVMuxer failed to open output file: " << output_url.c_str() 
                  << ". Error = " << error << endl;
