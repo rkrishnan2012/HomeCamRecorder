@@ -84,11 +84,12 @@ void run(int index) {
     do {
         source.last_frame_read_start_time = system_clock::now();
         source.needs_restart = false;
-
+        cout << "(" << source.name << ") Allocating context." << endl;
         AVFormatContext *input_ctx = avformat_alloc_context();
         AVIOInterruptCB callback = {interrupt_callback, (void *) &index};
         input_ctx->interrupt_callback = callback;
 
+        cout << "(" << source.name << ") Opening input." << endl;
         int ret;
         ret = avformat_open_input(&input_ctx, source.url.c_str(), nullptr, nullptr);
         if (ret < 0) {
@@ -102,6 +103,7 @@ void run(int index) {
             continue;
         }
 
+        cout << "(" << source.name << ") Finding stream info." << endl;
         ret = avformat_find_stream_info(input_ctx, nullptr);
         if (ret < 0) {
             cerr << "(" << source.name << ") Failed to find stream info"
@@ -112,17 +114,22 @@ void run(int index) {
             continue;
         }
 
+        cout << "(" << source.name << ") Finding video stream." << endl;
         AVCodec *input_video_codec;
         int video_stream_idx = av_find_best_stream(input_ctx, AVMEDIA_TYPE_VIDEO, -1, -1, &input_video_codec, 0);
 
+        cout << "(" << source.name << ") Finding audio stream." << endl;
         AVCodec *input_audio_codec;
         int audio_stream_idx = av_find_best_stream(input_ctx, AVMEDIA_TYPE_AUDIO, -1, -1, &input_audio_codec, 0);
 
+        cout << "(" << source.name << ") Read stream for playback." << endl;
         av_read_play(input_ctx);
 
         bool saw_key_frame = false;
 
         //auto motion_detector = MotionDetector();
+
+        cout << "(" << source.name << ") Starting playback loop." << endl;
 
         while (!kill_threads && !source.needs_restart) {
             AVPacket *packet = av_packet_alloc();
