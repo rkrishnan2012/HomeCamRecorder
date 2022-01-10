@@ -27,7 +27,7 @@ using namespace std;
 using namespace std::chrono;
 
 bool kill_threads;
-const int TIMEOUT_MILLI = 10000;
+const int TIMEOUT_MILLI = 20000;
 
 class CameraSource {
 public:
@@ -199,7 +199,7 @@ void monitor_frame_rates() {
 
             long seconds_since_last_frame = duration_cast<milliseconds>(now - source.last_frame_read_start_time).count();
             if (seconds_since_last_frame > TIMEOUT_MILLI) {
-                cout << "Camera (" << source.name << ") has died. Last frame was " << seconds_since_last_frame << " seconds ago." << endl;
+                cout << "Camera (" << source.name << ") has died. Last frame was " << seconds_since_last_frame << " ms ago." << endl;
                 source.last_frame_read_start_time = now;
                 source.needs_restart = true;
             }
