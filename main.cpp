@@ -81,15 +81,19 @@ int interrupt_callback(void *ptr) {
 
 void run(int index) {
     CameraSource &source = cameras.at(index);
-    source.last_frame_read_start_time = system_clock::now();
-    source.needs_restart = false;
     do {
+        source.last_frame_read_start_time = system_clock::now();
+        source.needs_restart = false;
+
         AVFormatContext *input_ctx = avformat_alloc_context();
         AVIOInterruptCB callback = {interrupt_callback, (void *) &index};
         input_ctx->interrupt_callback = callback;
 
-        if (avformat_open_input(&input_ctx, source.url.c_str(), nullptr, nullptr) < 0) {
-            cerr << "(" << source.name << ") Failed to open " << source.url << endl;
+        int ret;
+        ret = avformat_open_input(&input_ctx, source.url.c_str(), nullptr, nullptr)
+        if (ret < 0) {
+            cerr << "(" << source.name << ") Failed to open " << source.url 
+                 << ". Error = " << av_err2str(ret) << endl;
             source.needs_restart = true;
             avformat_free_context(input_ctx);
             avformat_close_input(&input_ctx);
@@ -98,8 +102,10 @@ void run(int index) {
             continue;
         }
 
-        if (avformat_find_stream_info(input_ctx, nullptr) < 0) {
-            cerr << "(" << source.name << ") Failed to find stream info." << endl;
+        ret = avformat_find_stream_info(input_ctx, nullptr)
+        if (ret < 0) {
+            cerr << "(" << source.name << ") Failed to find stream info"
+                 << ". Error = " << av_err2str(ret) << endl;;
             source.needs_restart = true;
             avformat_free_context(input_ctx);
             avformat_close_input(&input_ctx);
