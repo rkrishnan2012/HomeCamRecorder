@@ -1,12 +1,15 @@
 #include "Muxer.h"
+#include <fstream>
+#include <iostream>
 
 RotatingFileMuxer::RotatingFileMuxer(const string &basename, const string &extension) {
     this->basename = basename;
     this->extension = extension;
-    init();
+    this->did_init = false;
 }
 
 void RotatingFileMuxer::init() {
+    if (did_init) return;
     output_ctx = avformat_alloc_context();
     output_file = get_output_file_name();
     file_number = (file_number + 1) % MAX_FILES;
@@ -24,9 +27,17 @@ void RotatingFileMuxer::init() {
             return;
         }
     }
+    did_init = true;
+}
+
+void RotatingFileMuxer::add_stream(AVStream *input_stream, AVCodec *input_codec, bool write_header) {
+    Muxer::add_stream(input_stream, input_codec, write_header);
 }
 
 void RotatingFileMuxer::send_packet(AVPacket *packet) {
+    if (!did_init) {
+        init();
+    }
     long prev_duration = packet->duration;
     long prev_pts = packet->pts;
     long prev_dts = packet->dts;
@@ -77,6 +88,15 @@ string RotatingFileMuxer::get_output_file_name() {
     if (remove(output_file_full.c_str()) == 0) {
         cout << "RotatingFileMuxer removed file " << output_file_full << endl;
     }
+
+    // Write the system time of the start of this video to a separate file
+    long file_start_time_ms = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+    string timestamp_file_path = basename + "_" + std::to_string(file_number) + "_start_time.txt";
+    ofstream timestamp_file;
+    timestamp_file.open(timestamp_file_path);
+    timestamp_file << file_start_time_ms << endl;
+    timestamp_file.close();
+
     return output_file_full;
 }
 
@@ -86,5 +106,5 @@ void RotatingFileMuxer::release() {
         avio_closep(&output_ctx->pb);
     avformat_free_context(output_ctx);
     Muxer::release();
-    init();
+    did_init = false;
 }

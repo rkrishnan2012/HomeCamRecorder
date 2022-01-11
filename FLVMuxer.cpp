@@ -3,10 +3,11 @@
 FLVMuxer::FLVMuxer(const string &output_url) {
     this->output_url = output_url;
     cerr << "(FLVMuxer) Constructor calling init." << endl;
-    init();
 }
 
 void FLVMuxer::init() {
+    if (did_init) return;
+    
     cerr << "(FLVMuxer) allocating context." << endl;
     output_ctx = avformat_alloc_context();
 
@@ -26,9 +27,14 @@ void FLVMuxer::init() {
         }
         cerr << "(FLVMuxer) Done opening output file." << endl;
     }
+
+    did_init = true;
 }
 
 void FLVMuxer::send_packet(AVPacket *packet) {
+    if (!did_init)
+        init();
+    
     long prev_duration = packet->duration;
     long prev_pts = packet->pts;
     long prev_dts = packet->dts;
@@ -81,6 +87,6 @@ void FLVMuxer::release() {
     cerr << "(FLVMuxer) freeing context." << endl;
     avformat_free_context(output_ctx);
     Muxer::release();
-    cerr << "(FLVMuxer) calling init." << endl;
-    init();
+    did_init = false;
 }
+

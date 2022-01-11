@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 project(HomeCamRecorder)
 
-set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_FLAGS "-D__STDC_CONSTANT_MACROS")
 
 find_path(AVCODEC_INCLUDE_DIR libavcodec/avcodec.h)
@@ -27,9 +26,10 @@ find_library(X265_LIBRARY x265)
 find_library(RTMP_LIBRARY rtmp)
 find_library(DRM_LIBRARY drm)
 
-add_executable(HomeCamRecorder main.cpp RotatingFileMuxer.cpp FLVMuxer.cpp Muxer.h MotionDetector.cpp MotionDetector.h)
+add_executable(HomeCamRecorder main.cpp RotatingFileMuxer.cpp FLVMuxer.cpp Muxer.h MotionDetector.cpp MotionDetector.h SummaryGenerator.cpp SummaryGenerator.h)
 target_include_directories(HomeCamRecorder PRIVATE ${AVCODEC_INCLUDE_DIR}
         ${AVFORMAT_INCLUDE_DIR} ${AVUTIL_INCLUDE_DIR} ${AVDEVICE_INCLUDE_DIR} ${SWRESAMPLE_INCLUDE_DIR})
+target_compile_features(HomeCamRecorder PRIVATE cxx_std_17)
 
 if(NOT DRM_LIBRARY)
     target_link_libraries(HomeCamRecorder PRIVATE

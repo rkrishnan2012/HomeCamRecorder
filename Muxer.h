@@ -21,6 +21,7 @@ using namespace std::chrono;
 class Muxer {
 public:
     bool should_add_streams = true;
+    bool did_init = false;
 
     Muxer() = default;
     virtual void send_packet(AVPacket *packet) = 0;
@@ -29,6 +30,8 @@ public:
         last_frame_dts_per_stream[1] = -1;
         should_add_streams = true;
     }
+    virtual void init() = 0;
+    
     void add_stream(AVStream *input_stream,
                     AVCodec *input_codec,
                     bool write_header) {
@@ -37,6 +40,7 @@ public:
 
         AVCodecParameters *input_video_params = input_stream->codecpar;
         AVStream *output_stream = avformat_new_stream(output_ctx, input_codec);
+        cout << "Created stream" << endl;
         if (output_stream == nullptr) {
             cerr << "Failed to create output stream." << endl;
             return;
@@ -102,12 +106,15 @@ public:
 
     void release() override;
 
-    void init();
+    void init() override;
+    
+    void add_stream(AVStream *input_stream, AVCodec *input_codec, bool write_header);
 
 private:
     string get_output_file_name();
 
 private:
+    bool did_init;
     string basename;
     string extension;
     string output_file;
@@ -122,7 +129,7 @@ public:
     explicit FLVMuxer(const string& output_url);
     void send_packet(AVPacket *packet) override;
     void release() override;
-    void init();
+    void init() override;
 private:
     string output_url;
 };

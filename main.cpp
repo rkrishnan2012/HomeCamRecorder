@@ -4,9 +4,11 @@
 #include <utility>
 #include <vector>
 #include <unistd.h>
+#include <sstream>
 
 #include "Muxer.h"
 #include "MotionDetector.h"
+#include "SummaryGenerator.h"
 
 extern "C" {
 #include <libavformat/avformat.h>
@@ -28,17 +30,25 @@ using namespace std::chrono;
 
 bool kill_threads;
 const int TIMEOUT_MILLI = 20000;
+const string RECORDINGS_DIR = "/home/rohit/Recordings";
 
 class CameraSource {
 public:
-    CameraSource(string name, string input_url, vector<Muxer *> muxers) :
+    CameraSource(string name, string input_url, vector<Muxer *> muxers, string recordings_dir, string output_file_basename, int motion_threshold) :
             name(std::move(name)),
             muxers(std::move(muxers)),
-            url(std::move(input_url)) {}
+            url(std::move(input_url)),
+            recordings_dir(std::move(recordings_dir)),
+            output_file_basename(std::move(output_file_basename)),
+            motion_threshold(std::move(motion_threshold)) {}
 
 public:
     const string name;
     const string url;
+    const string recordings_dir;
+    const string output_file_basename;
+    const int motion_threshold;
+
     vector<Muxer *> muxers;
     bool needs_restart{false};
     int video_frames_read{};
@@ -58,14 +68,17 @@ vector<Muxer *> create_muxers(const string &basename,
 
 std::vector<CameraSource> cameras = { // NOLINT(cert-err58-cpp)
         CameraSource("Front door", "rtsp://admin:2147483648@10.0.9.48/live/ch0",
-                     create_muxers("/home/rohit/Recordings/front_door", "flv",
-                                   "rtmp://localhost/flv/1")),
+                     create_muxers(RECORDINGS_DIR + "/front_door", "flv",
+                                   "rtmp://localhost/flv/1"),
+                     RECORDINGS_DIR, "front_door", 30000),
         CameraSource("Back yard", "rtsp://admin:2147483648@10.0.9.26/live/ch0",
-                     create_muxers("/home/rohit/Recordings/back_yard", "flv",
-                                   "rtmp://localhost/flv/2")),
+                     create_muxers(RECORDINGS_DIR + "/back_yard", "flv",
+                                   "rtmp://localhost/flv/2"),
+                    RECORDINGS_DIR, "back_yard", 30000),
         CameraSource("Driveway", "rtsp://admin:2147483648@10.0.9.32/live/ch0",
-                     create_muxers("/home/rohit/Recordings/driveway", "flv",
-                                   "rtmp://localhost/flv/3"))
+                     create_muxers(RECORDINGS_DIR + "/driveway", "flv",
+                                   "rtmp://localhost/flv/3"),
+                     RECORDINGS_DIR, "driveway", 30000)
 };
 
 int interrupt_callback(void *ptr) {
@@ -126,8 +139,9 @@ void run(int index) {
         av_read_play(input_ctx);
 
         bool saw_key_frame = false;
-
-        auto motion_detector = MotionDetector();
+        
+        auto motion_csv = source.recordings_dir + "/" + source.output_file_basename + ".csv";
+        auto motion_detector = MotionDetector(motion_csv, source.motion_threshold);
 
         cout << "(" << source.name << ") Starting playback loop." << endl;
 
@@ -149,8 +163,13 @@ void run(int index) {
             saw_key_frame = true;
 
             for (Muxer *muxer: source.muxers) {
+                if (!muxer->did_init) {
+                    muxer->init();
+                }
                 if (muxer->should_add_streams) {
+                    cout << "Setting input video stream." << endl;
                     auto input_video_stream = input_ctx->streams[video_stream_idx];
+                    cout << "Adding streams." << endl;
                     muxer->add_stream(input_video_stream, input_video_codec, false);
                     auto input_audio_stream = input_ctx->streams[audio_stream_idx];
                     muxer->add_stream(input_audio_stream, input_audio_codec, true);
@@ -208,27 +227,50 @@ void monitor_frame_rates() {
     }
 }
 
+void generate_summaries() {
+    for (CameraSource &source: cameras) {
+        auto summary_generator = SummaryGenerator(
+            source.recordings_dir,
+            source.output_file_basename,
+            source.recordings_dir + source.output_file_basename + "/summary.flv"
+        );
+        summary_generator.run();
+    }
+}
+
 void signal_handler(int signum) {
     if (signum != SIGINT) return;
     cout << "Interrupt signal (" << signum << ") received.\n";
     kill_threads = true;
 }
 
-int main() {
+int main(int argc, char* argv[]) {
     signal(SIGINT, signal_handler);
 
     std::cout << "HomeCam v0" << std::endl;
     avformat_network_init();
-
-    thread camera1(run, 0);
-    thread camera2(run, 1);
-    thread camera3(run, 2);
-    thread frame_rate_monitor(monitor_frame_rates);
-
-    frame_rate_monitor.join();
-    camera1.join();
-    camera2.join();
-    camera3.join();
+    
+    bool run_summary = false;
+    for (int i = 0; i < argc; i++) {
+        if (strcmp(argv[i], "--summarize") == 0) {
+            run_summary = true;
+            break;
+        }
+    }
+    
+    if (!run_summary) {
+        thread camera1(run, 0);
+        thread camera2(run, 1);
+        thread camera3(run, 2);
+        thread frame_rate_monitor(monitor_frame_rates);
+        frame_rate_monitor.join();
+        camera1.join();
+        camera2.join();
+        camera3.join();
+    } else {
+        cout << "Generating summary" << endl;
+        generate_summaries();
+    }
 
     return 0;
 }

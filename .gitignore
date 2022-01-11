@@ -4,3 +4,8 @@ CMakeFiles/
 HomeCamRecorder
 Makefile
 cmake_install.cmake
+CMakeScripts/
+HomeCamRecorder.build/
+build/
+HomeCamRecorder.xcodeproj/xcuserdata/
+HomeCamRecorder.xcodeproj/project.xcworkspace/xcuserdata/
