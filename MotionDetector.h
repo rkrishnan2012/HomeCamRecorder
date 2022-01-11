@@ -17,6 +17,9 @@ public:
     void release();
 
     MotionDetector();
+
+private:
+    void mark_idr_frame_size(int size);
 };
 
 

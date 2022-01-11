@@ -127,7 +127,7 @@ void run(int index) {
 
         bool saw_key_frame = false;
 
-        //auto motion_detector = MotionDetector();
+        auto motion_detector = MotionDetector();
 
         cout << "(" << source.name << ") Starting playback loop." << endl;
 
@@ -160,7 +160,7 @@ void run(int index) {
             for (Muxer *muxer: source.muxers)
                 muxer->send_packet(packet);
             if (packet->stream_index == video_stream_idx) {
-                //motion_detector.send_packet(packet);
+                motion_detector.send_packet(packet);
             }
 
             if (packet->stream_index == video_stream_idx) source.video_frames_read++;
@@ -172,7 +172,7 @@ void run(int index) {
         cerr << "(" << source.name << ") Releasing muxers." << endl;
         for (Muxer *muxer: source.muxers)
             muxer->release();
-        //motion_detector.release();
+        motion_detector.release();
         
         cerr << "(" << source.name << ") closing input." << endl;
         avformat_close_input(&input_ctx);
