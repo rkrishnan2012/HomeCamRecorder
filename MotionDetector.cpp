@@ -9,6 +9,9 @@ void MotionDetector::release() {
 }
 
 void MotionDetector::send_packet(AVPacket *packet) {
+    int last_IDR_index = -1;
+    const int UNIT_TYPE_IDR = 5; // https://www.itu.int/rec/T-REC-H.264-200305-S Table 7-1.
+
     for (int i = 5; i < packet->size; i++) {
         if (packet->data[i-2] == 1 && packet->data[i-3] == 0 && packet->data[i-4] == 0 && packet->data[i-5] == 0) {
             auto data = packet->data;
@@ -16,23 +19,27 @@ void MotionDetector::send_packet(AVPacket *packet) {
             int forbidden = (header & (0b10000000)) >> 7;
             int ref_idc = (header & (0b01100000)) >> 5;
             int unit_type = header & (0b00011111);
-            if (unit_type <= 5) {
-                int leading_zero_bits = 0;
-                for (int b = 0; !b; leading_zero_bits++) {
-                    b = data[i] & (1 << (7 - leading_zero_bits));
-                    if (leading_zero_bits > 7) {
-                        cerr << "FAILED!" << endl;
-                    }
+            if (unit_type == UNIT_TYPE_IDR) {
+                if (last_IDR_index == -1) {
+                    last_IDR_index = i;
                 }
-                leading_zero_bits++;
-                cout << "   LeadingZeroBits: " << leading_zero_bits << endl;
-                cout << "      ";
-                for (int b = leading_zero_bits; b < 2 * leading_zero_bits; b++) {
-                    cout << (data[i] & (1 << (7 - b)));
+            } else {
+                if (last_IDR_index != -1) {
+                    mark_idr_frame_size(i - last_IDR_index);
+                    last_IDR_index = -1;
                 }
-
             }
-            cout << "   Header: " << forbidden << " " << ref_idc << " " << unit_type << endl;
         }
+    }
+    if (last_IDR_index != -1) {
+        mark_idr_frame_size(packet->size - last_IDR_index);
+        last_IDR_index = -1;
+    }
+}
+
+void MotionDetector::mark_idr_frame_size(int size) {
+    const int THRESHOLD = 50000;
+    if (size < THRESHOLD) {
+        cout << "Motion detected!" << endl;
     }
 }
