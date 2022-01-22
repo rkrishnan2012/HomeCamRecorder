@@ -71,10 +71,10 @@ std::vector<CameraSource> cameras = { // NOLINT(cert-err58-cpp)
                      create_muxers(RECORDINGS_DIR + "/front_door", "flv",
                                    "rtmp://localhost/flv/1"),
                      RECORDINGS_DIR, "front_door", 30000),
-        CameraSource("Back yard", "rtsp://admin:2147483648@10.0.9.26/live/ch0",
-                     create_muxers(RECORDINGS_DIR + "/back_yard", "flv",
-                                   "rtmp://localhost/flv/2"),
-                    RECORDINGS_DIR, "back_yard", 30000),
+//        CameraSource("Back yard", "rtsp://admin:2147483648@10.0.9.26/live/ch0",
+//                     create_muxers(RECORDINGS_DIR + "/back_yard", "flv",
+//                                   "rtmp://localhost/flv/2"),
+//                    RECORDINGS_DIR, "back_yard", 30000),
         CameraSource("Driveway", "rtsp://admin:2147483648@10.0.9.32/live/ch0",
                      create_muxers(RECORDINGS_DIR + "/driveway", "flv",
                                    "rtmp://localhost/flv/3"),
@@ -124,19 +124,49 @@ void run(int index) {
             source.needs_restart = true;
             avformat_free_context(input_ctx);
             avformat_close_input(&input_ctx);
+            sleep(10);
             continue;
         }
 
         cout << "(" << source.name << ") Finding video stream." << endl;
         AVCodec *input_video_codec;
         int video_stream_idx = av_find_best_stream(input_ctx, AVMEDIA_TYPE_VIDEO, -1, -1, &input_video_codec, 0);
+        if (video_stream_idx == -1) {
+            cerr << "(" << source.name << ") Failed to find video stream"
+                 << ". Error = " << av_err2str(ret) << endl;;
+            source.needs_restart = true;
+            avformat_free_context(input_ctx);
+            avformat_close_input(&input_ctx);
+            sleep(10);
+            continue;
+        }
 
         cout << "(" << source.name << ") Finding audio stream." << endl;
         AVCodec *input_audio_codec;
         int audio_stream_idx = av_find_best_stream(input_ctx, AVMEDIA_TYPE_AUDIO, -1, -1, &input_audio_codec, 0);
-
+        if (audio_stream_idx == -1) {
+            cerr << "(" << source.name << ") Failed to find audio stream"
+                 << ". Error = " << av_err2str(ret) << endl;;
+            source.needs_restart = true;
+            avformat_free_context(input_ctx);
+            avformat_close_input(&input_ctx);
+            continue;
+        }
+        
         cout << "(" << source.name << ") Read stream for playback." << endl;
-        av_read_play(input_ctx);
+        ret = av_read_play(input_ctx);
+        if (ret != 0) {
+            cout << "(" << source.name << ") Failed to read stream for playback. Restarting." << endl;
+            source.needs_restart = true;
+            cout << "(" << source.name << ") Freeing context." << endl;
+            avformat_free_context(input_ctx);
+            cout << "(" << source.name << ") Freed context." << endl;
+            if (input_ctx) {
+                avformat_close_input(&input_ctx);
+                cout << "(" << source.name << ") Closed input." << endl;
+            }
+            continue;
+        }
 
         bool saw_key_frame = false;
         
@@ -261,12 +291,12 @@ int main(int argc, char* argv[]) {
     if (!run_summary) {
         thread camera1(run, 0);
         thread camera2(run, 1);
-        thread camera3(run, 2);
+//        thread camera3(run, 2);
         thread frame_rate_monitor(monitor_frame_rates);
         frame_rate_monitor.join();
         camera1.join();
         camera2.join();
-        camera3.join();
+//        camera3.join();
     } else {
         cout << "Generating summary" << endl;
         generate_summaries();

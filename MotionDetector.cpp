@@ -10,6 +10,9 @@ void MotionDetector::release() {
 
 }
 
+/**
+  Extract multiple H264 NAL units from an AVPacket, find the IDR frame, and mark its size. If size > some threshold, mark the timestamp to a text file.
+ */
 void MotionDetector::send_packet(AVPacket *packet) {
     int last_IDR_index = -1;
     const int UNIT_TYPE_IDR = 5; // https://www.itu.int/rec/T-REC-H.264-200305-S Table 7-1.
