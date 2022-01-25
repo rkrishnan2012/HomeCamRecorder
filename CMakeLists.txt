@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.20)
 project(HomeCamRecorder)
 
 set(CMAKE_CXX_FLAGS "-D__STDC_CONSTANT_MACROS")
+SET(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS "-g -rdynamic")  
+set(CMAKE_BUILD_TYPE Debug)
 
 find_path(AVCODEC_INCLUDE_DIR libavcodec/avcodec.h)
 find_library(AVCODEC_LIBRARY avcodec)
@@ -26,9 +28,14 @@ find_library(X265_LIBRARY x265)
 find_library(RTMP_LIBRARY rtmp)
 find_library(DRM_LIBRARY drm)
 
-add_executable(HomeCamRecorder main.cpp RotatingFileMuxer.cpp FLVMuxer.cpp Muxer.h MotionDetector.cpp MotionDetector.h SummaryGenerator.cpp SummaryGenerator.h)
+find_package(CURL REQUIRED)
+
+add_executable(HomeCamRecorder main.cpp RotatingFileMuxer.cpp FLVMuxer.cpp Muxer.h MotionDetector.cpp MotionDetector.h SummaryGenerator.cpp SummaryGenerator.h type_conversion.h twilio.h twilio.cpp )
 target_include_directories(HomeCamRecorder PRIVATE ${AVCODEC_INCLUDE_DIR}
         ${AVFORMAT_INCLUDE_DIR} ${AVUTIL_INCLUDE_DIR} ${AVDEVICE_INCLUDE_DIR} ${SWRESAMPLE_INCLUDE_DIR})
+
+target_include_directories(HomeCamRecorder PRIVATE ${CURL_INCLUDE_DIR})
+
 target_compile_features(HomeCamRecorder PRIVATE cxx_std_17)
 
 if(NOT DRM_LIBRARY)
@@ -44,3 +51,5 @@ else()
             ${MATH_LIBRARY} ${Z_LIBRARY} ${P_THREAD_LIBRARY} ${X264_LIBRARY}
             ${X265_LIBRARY} ${DRM_LIBRARY} ${RTMP_LIBRARY})
 endif()
+
+target_link_libraries(HomeCamRecorder PRIVATE ${CURL_LIBRARIES})

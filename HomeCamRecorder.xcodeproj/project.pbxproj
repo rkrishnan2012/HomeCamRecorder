@@ -9,7 +9,7 @@
 /* Begin PBXAggregateTarget section */
 		4A106DF1A5C54BADBE019F7D /* ZERO_CHECK */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 89BA6DBB3BF8414BB0B4C5E5 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildConfigurationList = 8AE1343F785449C88CA8CDCC /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
 			buildPhases = (
 				46FC0C986BFF6B678C419869 /* Generate CMakeFiles/ZERO_CHECK */,
 			);
@@ -20,13 +20,13 @@
 		};
 		74774FC38B7340909F0079F8 /* ALL_BUILD */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = C3A6D48CD438419782ED4115 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildConfigurationList = 79E9A7721BBF4F12909B17B4 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
 			buildPhases = (
 				3532682477E53C7B894E8021 /* Generate CMakeFiles/ALL_BUILD */,
 			);
 			dependencies = (
-				C417D5953989482CA5E123FE /* PBXTargetDependency */,
-				BD41406DD6984A0BAA74E997 /* PBXTargetDependency */,
+				E509EBFB75C34AFF821A3C77 /* PBXTargetDependency */,
+				38062DE88D3D47F89C703107 /* PBXTargetDependency */,
 			);
 			name = ALL_BUILD;
 			productName = ALL_BUILD;
@@ -34,40 +34,43 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		0C93E9D1E90E407581C2CBC9 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/SummaryGenerator.h */ = {isa = PBXBuildFile; fileRef = 9F21343EC65D49D297A13C92 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/SummaryGenerator.h */; };
-		577930485D644E9CAD5BB42C /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/MotionDetector.cpp */ = {isa = PBXBuildFile; fileRef = 21F3EBE443674272810A9139 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/MotionDetector.cpp */; };
-		65319247E2F8470F98B596FC /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/main.cpp */ = {isa = PBXBuildFile; fileRef = B249F4A94F754F4DAFDD3B99 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/main.cpp */; };
-		9F78CB0F3A5845EFB225CD70 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/Muxer.h */ = {isa = PBXBuildFile; fileRef = 1112068FB31643EDB5ACDD61 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/Muxer.h */; };
-		A44BB693669F4CE2BB16D640 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/MotionDetector.h */ = {isa = PBXBuildFile; fileRef = 2596D7960AD142AD9DB69AE8 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/MotionDetector.h */; };
-		AA63466F32D5437EBA7EB62C /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/SummaryGenerator.cpp */ = {isa = PBXBuildFile; fileRef = B08B988C4CD64BC496F36156 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/SummaryGenerator.cpp */; };
-		C8E38DBC671442ED9DF6DE62 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = 752C411C2FD74E7397280D7C /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/CMakeLists.txt */; };
-		D3E4B1D3FF224BC096DA0C4A /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/FLVMuxer.cpp */ = {isa = PBXBuildFile; fileRef = 3834EB9D0FE84AD1B7746865 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/FLVMuxer.cpp */; };
-		D551E2205EB64468BE4A813C /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/RotatingFileMuxer.cpp */ = {isa = PBXBuildFile; fileRef = 3C7BF72CC9F045E085F6D1F1 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/RotatingFileMuxer.cpp */; };
+		160171299D434FCC8EF83021 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = 2FF9F81F96EB4F42B28C80E0 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/CMakeLists.txt */; };
+		17CCE3491C854336B26781E7 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/MotionDetector.h */ = {isa = PBXBuildFile; fileRef = FF8E53069CF74FB493E2119C /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/MotionDetector.h */; };
+		1A4BC25E7EA441DFB00D8F1C /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/Muxer.h */ = {isa = PBXBuildFile; fileRef = 44A8A95E058647B2938622DD /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/Muxer.h */; };
+		585DFE85334945D89DD548E8 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/twilio.cpp */ = {isa = PBXBuildFile; fileRef = 8A598C3FC6D4459FA9876E93 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/twilio.cpp */; };
+		692EBBC144004B17AFBDDB07 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/type_conversion.h */ = {isa = PBXBuildFile; fileRef = 2FF58591F81240E6AE28EB9F /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/type_conversion.h */; };
+		6C8473F5B6AF4ECEB8695664 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/RotatingFileMuxer.cpp */ = {isa = PBXBuildFile; fileRef = 474424B5955448B68D50F3FD /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/RotatingFileMuxer.cpp */; };
+		84D5D1DE19E74189B60628C6 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/MotionDetector.cpp */ = {isa = PBXBuildFile; fileRef = 37B1BAD9F4D9481E967F39BE /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/MotionDetector.cpp */; };
+		8E99A2B2AEAD45F7AE944A7C /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/twilio.h */ = {isa = PBXBuildFile; fileRef = 06F8AA1E0CED4961946D4423 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/twilio.h */; };
+		910684BBCBF54E55A91CB9F9 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/main.cpp */ = {isa = PBXBuildFile; fileRef = A480FB71BE1F4DA5B00D19F5 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/main.cpp */; };
+		D3C3DF509ECC4131BB3F3BC7 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/SummaryGenerator.h */ = {isa = PBXBuildFile; fileRef = A009346B020C498A9DD71B27 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/SummaryGenerator.h */; };
+		DEE90E00479A4A468F85265B /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/FLVMuxer.cpp */ = {isa = PBXBuildFile; fileRef = 4DB4F8B131B94E059C14AB90 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/FLVMuxer.cpp */; };
+		F0CDE46A20FA4E6A90E27C9B /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/SummaryGenerator.cpp */ = {isa = PBXBuildFile; fileRef = BD6DBEA7766F4B7BAD633642 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/SummaryGenerator.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildStyle section */
-		4D774AFBD9BE4BAA96C1AAE6 /* RelWithDebInfo */ = {
-			isa = PBXBuildStyle;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-			};
-			name = RelWithDebInfo;
-		};
-		825E11D0A9284D4AA6F0183D /* MinSizeRel */ = {
+		1E315114A6144637B316AECE /* MinSizeRel */ = {
 			isa = PBXBuildStyle;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 			};
 			name = MinSizeRel;
 		};
-		A5BE3DE721AF4D4B8CB81422 /* Debug */ = {
+		3BF61BA0F1134B439CB3D95A /* RelWithDebInfo */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = RelWithDebInfo;
+		};
+		4EE03065C7DE4826B2689CE3 /* Debug */ = {
 			isa = PBXBuildStyle;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 			};
 			name = Debug;
 		};
-		B70CF3342A3C4953AF04BFE8 /* Release */ = {
+		9C4C6DC848744CC1A5922D8D /* Release */ = {
 			isa = PBXBuildStyle;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
@@ -77,21 +80,21 @@
 /* End PBXBuildStyle section */
 
 /* Begin PBXContainerItemProxy section */
-		1465955B4C0B413B922E97A5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8FF3A59E5CA347E788D92C50 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4A106DF1A5C54BADBE019F7D;
-			remoteInfo = ZERO_CHECK;
-		};
-		691D2461600745B18041B0EE /* PBXContainerItemProxy */ = {
+		5E893545267A4E7CA64070A3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8FF3A59E5CA347E788D92C50 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = BD375559A2064A1F990862A9;
 			remoteInfo = HomeCamRecorder;
 		};
-		BCFE6E916F0340F39D775938 /* PBXContainerItemProxy */ = {
+		8709B6F9B1974BFFA34F0557 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8FF3A59E5CA347E788D92C50 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4A106DF1A5C54BADBE019F7D;
+			remoteInfo = ZERO_CHECK;
+		};
+		B514182137044F01A6407F07 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8FF3A59E5CA347E788D92C50 /* Project object */;
 			proxyType = 1;
@@ -101,21 +104,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0F59D346F07641ED8A176EEB /* HomeCamRecorder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = HomeCamRecorder; sourceTree = BUILT_PRODUCTS_DIR; };
-		1112068FB31643EDB5ACDD61 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/Muxer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Muxer.h; path = Muxer.h; sourceTree = SOURCE_ROOT; };
-		21F3EBE443674272810A9139 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/MotionDetector.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = MotionDetector.cpp; path = MotionDetector.cpp; sourceTree = SOURCE_ROOT; };
-		2596D7960AD142AD9DB69AE8 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/MotionDetector.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = MotionDetector.h; path = MotionDetector.h; sourceTree = SOURCE_ROOT; };
-		3834EB9D0FE84AD1B7746865 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/FLVMuxer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = FLVMuxer.cpp; path = FLVMuxer.cpp; sourceTree = SOURCE_ROOT; };
-		3C7BF72CC9F045E085F6D1F1 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/RotatingFileMuxer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = RotatingFileMuxer.cpp; path = RotatingFileMuxer.cpp; sourceTree = SOURCE_ROOT; };
-		752C411C2FD74E7397280D7C /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
-		9F21343EC65D49D297A13C92 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/SummaryGenerator.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SummaryGenerator.h; path = SummaryGenerator.h; sourceTree = SOURCE_ROOT; };
-		B08B988C4CD64BC496F36156 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/SummaryGenerator.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = SummaryGenerator.cpp; path = SummaryGenerator.cpp; sourceTree = SOURCE_ROOT; };
-		B249F4A94F754F4DAFDD3B99 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = main.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
-		C692D479D8A8477D86CE9277 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		06F8AA1E0CED4961946D4423 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/twilio.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = twilio.h; path = twilio.h; sourceTree = SOURCE_ROOT; };
+		0A602D49D76443C9B9BDA3E3 /* HomeCamRecorder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = HomeCamRecorder; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FF58591F81240E6AE28EB9F /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/type_conversion.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = type_conversion.h; path = type_conversion.h; sourceTree = SOURCE_ROOT; };
+		2FF9F81F96EB4F42B28C80E0 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		37B1BAD9F4D9481E967F39BE /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/MotionDetector.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = MotionDetector.cpp; path = MotionDetector.cpp; sourceTree = SOURCE_ROOT; };
+		44A8A95E058647B2938622DD /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/Muxer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Muxer.h; path = Muxer.h; sourceTree = SOURCE_ROOT; };
+		474424B5955448B68D50F3FD /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/RotatingFileMuxer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = RotatingFileMuxer.cpp; path = RotatingFileMuxer.cpp; sourceTree = SOURCE_ROOT; };
+		4DB4F8B131B94E059C14AB90 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/FLVMuxer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = FLVMuxer.cpp; path = FLVMuxer.cpp; sourceTree = SOURCE_ROOT; };
+		8A598C3FC6D4459FA9876E93 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/twilio.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = twilio.cpp; path = twilio.cpp; sourceTree = SOURCE_ROOT; };
+		8B1F389ECFCF401C8D8EE576 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		A009346B020C498A9DD71B27 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/SummaryGenerator.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SummaryGenerator.h; path = SummaryGenerator.h; sourceTree = SOURCE_ROOT; };
+		A480FB71BE1F4DA5B00D19F5 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = main.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
+		BD6DBEA7766F4B7BAD633642 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/SummaryGenerator.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = SummaryGenerator.cpp; path = SummaryGenerator.cpp; sourceTree = SOURCE_ROOT; };
+		FF8E53069CF74FB493E2119C /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/MotionDetector.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = MotionDetector.h; path = MotionDetector.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9879B921D79A45578E1AA5D2 /* Frameworks */ = {
+		0997EB31E022456CACBB38DF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -125,77 +131,80 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0DBC508F57A9430892EE2695 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		4C6D137B631E41AB831C26D5 = {
-			isa = PBXGroup;
-			children = (
-				EF4BCEF652E24ABD815B3EED /* HomeCamRecorder */,
-				96EE6F8FF72C4897BB335736 /* ALL_BUILD */,
-				9AFFC4BB7F124C80B7E38CAD /* Products */,
-				0DBC508F57A9430892EE2695 /* Frameworks */,
-			);
-			sourceTree = "<group>";
-		};
-		96EE6F8FF72C4897BB335736 /* ALL_BUILD */ = {
-			isa = PBXGroup;
-			children = (
-				B1B2A4173EE549C2B7FA4E97 /* CMake Rules */,
-				C692D479D8A8477D86CE9277 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/CMakeLists.txt */,
-			);
-			name = ALL_BUILD;
-			sourceTree = "<group>";
-		};
-		9AFFC4BB7F124C80B7E38CAD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0F59D346F07641ED8A176EEB /* HomeCamRecorder */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		A15D2BD84BAE4AC3844F298F /* Header Files */ = {
-			isa = PBXGroup;
-			children = (
-				2596D7960AD142AD9DB69AE8 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/MotionDetector.h */,
-				1112068FB31643EDB5ACDD61 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/Muxer.h */,
-				9F21343EC65D49D297A13C92 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/SummaryGenerator.h */,
-			);
-			name = "Header Files";
-			sourceTree = "<group>";
-		};
-		B1B2A4173EE549C2B7FA4E97 /* CMake Rules */ = {
+		26DAD1468A284BC087A50D1D /* CMake Rules */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = "CMake Rules";
 			sourceTree = "<group>";
 		};
-		BBBDF2E554B54B1A97B705CD /* Source Files */ = {
+		3597FE36BACA48DFA76A0E75 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3834EB9D0FE84AD1B7746865 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/FLVMuxer.cpp */,
-				21F3EBE443674272810A9139 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/MotionDetector.cpp */,
-				3C7BF72CC9F045E085F6D1F1 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/RotatingFileMuxer.cpp */,
-				B08B988C4CD64BC496F36156 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/SummaryGenerator.cpp */,
-				B249F4A94F754F4DAFDD3B99 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/main.cpp */,
+				0A602D49D76443C9B9BDA3E3 /* HomeCamRecorder */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		62B43ACFD8294D6482F8137D /* Header Files */ = {
+			isa = PBXGroup;
+			children = (
+				FF8E53069CF74FB493E2119C /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/MotionDetector.h */,
+				44A8A95E058647B2938622DD /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/Muxer.h */,
+				A009346B020C498A9DD71B27 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/SummaryGenerator.h */,
+				06F8AA1E0CED4961946D4423 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/twilio.h */,
+				2FF58591F81240E6AE28EB9F /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/type_conversion.h */,
+			);
+			name = "Header Files";
+			sourceTree = "<group>";
+		};
+		80182CC8B7894E4885739428 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				4DB4F8B131B94E059C14AB90 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/FLVMuxer.cpp */,
+				37B1BAD9F4D9481E967F39BE /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/MotionDetector.cpp */,
+				474424B5955448B68D50F3FD /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/RotatingFileMuxer.cpp */,
+				BD6DBEA7766F4B7BAD633642 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/SummaryGenerator.cpp */,
+				A480FB71BE1F4DA5B00D19F5 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/main.cpp */,
+				8A598C3FC6D4459FA9876E93 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/twilio.cpp */,
 			);
 			name = "Source Files";
 			sourceTree = "<group>";
 		};
-		EF4BCEF652E24ABD815B3EED /* HomeCamRecorder */ = {
+		A747D626A4834408882DF675 = {
 			isa = PBXGroup;
 			children = (
-				BBBDF2E554B54B1A97B705CD /* Source Files */,
-				A15D2BD84BAE4AC3844F298F /* Header Files */,
-				752C411C2FD74E7397280D7C /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/CMakeLists.txt */,
+				BDCEA4C3F73E4D61AE8AA4CB /* HomeCamRecorder */,
+				C960A1254CB74FC59069B06E /* ALL_BUILD */,
+				3597FE36BACA48DFA76A0E75 /* Products */,
+				D1EF537966C64793A659EC32 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BDCEA4C3F73E4D61AE8AA4CB /* HomeCamRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				80182CC8B7894E4885739428 /* Source Files */,
+				62B43ACFD8294D6482F8137D /* Header Files */,
+				2FF9F81F96EB4F42B28C80E0 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/CMakeLists.txt */,
 			);
 			name = HomeCamRecorder;
+			sourceTree = "<group>";
+		};
+		C960A1254CB74FC59069B06E /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				26DAD1468A284BC087A50D1D /* CMake Rules */,
+				8B1F389ECFCF401C8D8EE576 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		D1EF537966C64793A659EC32 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,19 +212,19 @@
 /* Begin PBXNativeTarget section */
 		BD375559A2064A1F990862A9 /* HomeCamRecorder */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4E7E191ADC314F17A2A4C118 /* Build configuration list for PBXNativeTarget "HomeCamRecorder" */;
+			buildConfigurationList = F5D7EA58F0A949DDB0DBCFF5 /* Build configuration list for PBXNativeTarget "HomeCamRecorder" */;
 			buildPhases = (
-				6246954FB5B4475BA809D877 /* Sources */,
-				9879B921D79A45578E1AA5D2 /* Frameworks */,
+				8E5568F21ABB4F5EA63FFA2A /* Sources */,
+				0997EB31E022456CACBB38DF /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				BCB312B3DC0941AF9F9FF314 /* PBXTargetDependency */,
+				87F3EC8B67C94431804BF9F3 /* PBXTargetDependency */,
 			);
 			name = HomeCamRecorder;
 			productName = HomeCamRecorder;
-			productReference = 0F59D346F07641ED8A176EEB /* HomeCamRecorder */;
+			productReference = 0A602D49D76443C9B9BDA3E3 /* HomeCamRecorder */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -227,18 +236,18 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1320;
 			};
-			buildConfigurationList = 54DBBAB2D6F245E587F3A113 /* Build configuration list for PBXProject "HomeCamRecorder" */;
+			buildConfigurationList = 8BFC94B256F246A29D024166 /* Build configuration list for PBXProject "HomeCamRecorder" */;
 			buildSettings = {
 			};
 			buildStyles = (
-				A5BE3DE721AF4D4B8CB81422 /* Debug */,
-				B70CF3342A3C4953AF04BFE8 /* Release */,
-				825E11D0A9284D4AA6F0183D /* MinSizeRel */,
-				4D774AFBD9BE4BAA96C1AAE6 /* RelWithDebInfo */,
+				4EE03065C7DE4826B2689CE3 /* Debug */,
+				9C4C6DC848744CC1A5922D8D /* Release */,
+				1E315114A6144637B316AECE /* MinSizeRel */,
+				3BF61BA0F1134B439CB3D95A /* RelWithDebInfo */,
 			);
 			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 0;
-			mainGroup = 4C6D137B631E41AB831C26D5;
+			mainGroup = A747D626A4834408882DF675;
 			projectDirPath = .;
 			projectRoot = "";
 			targets = (
@@ -349,40 +358,41 @@ exit 0";
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		6246954FB5B4475BA809D877 /* Sources */ = {
+		8E5568F21ABB4F5EA63FFA2A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3E4B1D3FF224BC096DA0C4A /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/FLVMuxer.cpp */,
-				577930485D644E9CAD5BB42C /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/MotionDetector.cpp */,
-				D551E2205EB64468BE4A813C /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/RotatingFileMuxer.cpp */,
-				AA63466F32D5437EBA7EB62C /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/SummaryGenerator.cpp */,
-				65319247E2F8470F98B596FC /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/main.cpp */,
+				DEE90E00479A4A468F85265B /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/FLVMuxer.cpp */,
+				84D5D1DE19E74189B60628C6 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/MotionDetector.cpp */,
+				6C8473F5B6AF4ECEB8695664 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/RotatingFileMuxer.cpp */,
+				F0CDE46A20FA4E6A90E27C9B /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/SummaryGenerator.cpp */,
+				910684BBCBF54E55A91CB9F9 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/main.cpp */,
+				585DFE85334945D89DD548E8 /* /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/twilio.cpp */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		BCB312B3DC0941AF9F9FF314 /* PBXTargetDependency */ = {
+		38062DE88D3D47F89C703107 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4A106DF1A5C54BADBE019F7D /* ZERO_CHECK */;
-			targetProxy = 1465955B4C0B413B922E97A5 /* PBXContainerItemProxy */;
+			targetProxy = B514182137044F01A6407F07 /* PBXContainerItemProxy */;
 		};
-		BD41406DD6984A0BAA74E997 /* PBXTargetDependency */ = {
+		87F3EC8B67C94431804BF9F3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4A106DF1A5C54BADBE019F7D /* ZERO_CHECK */;
-			targetProxy = BCFE6E916F0340F39D775938 /* PBXContainerItemProxy */;
+			targetProxy = 8709B6F9B1974BFFA34F0557 /* PBXContainerItemProxy */;
 		};
-		C417D5953989482CA5E123FE /* PBXTargetDependency */ = {
+		E509EBFB75C34AFF821A3C77 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BD375559A2064A1F990862A9 /* HomeCamRecorder */;
-			targetProxy = 691D2461600745B18041B0EE /* PBXContainerItemProxy */;
+			targetProxy = 5E893545267A4E7CA64070A3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		01CDC7B9923440F2855BF82B /* MinSizeRel */ = {
+		226C8BC5FE4943129BD22F7E /* RelWithDebInfo */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -400,163 +410,9 @@ exit 0";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = ("$(inherited)");
 			};
-			name = MinSizeRel;
-		};
-		0DA83CD4300B43F6A68B7517 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				EXECUTABLE_PREFIX = "";
-				EXECUTABLE_SUFFIX = "";
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (/usr/local/include,"$(inherited)");
-				INSTALL_PATH = "";
-				OTHER_CPLUSPLUSFLAGS = "-D__STDC_CONSTANT_MACROS    '-std=gnu++17' ";
-				OTHER_LDFLAGS = (" -Wl,-search_paths_first -Wl,-headerpad_max_install_names",/usr/local/lib/libavformat.dylib,/usr/local/lib/libavcodec.dylib,/usr/local/lib/libavutil.dylib,/usr/local/lib/libavdevice.dylib,/usr/local/lib/libswresample.dylib,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libm.tbd,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libz.tbd,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libpthread.tbd,/usr/local/lib/libx264.dylib,/usr/local/lib/libx265.dylib,"$(inherited)");
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = HomeCamRecorder;
-				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/rohitkrishnan/CLionProjects/HomeCamRecorder;
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("$(inherited)");
-			};
-			name = Debug;
-		};
-		1235263FCD7B4E698826D872 /* MinSizeRel */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = ("","$(inherited)");
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/rohitkrishnan/CLionProjects/HomeCamRecorder;
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("$(inherited)");
-			};
-			name = MinSizeRel;
-		};
-		1A0A1C35E8C1444F8C9976CF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = ("","$(inherited)");
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ALL_BUILD;
-				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/rohitkrishnan/CLionProjects/HomeCamRecorder;
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("$(inherited)");
-			};
-			name = Debug;
-		};
-		2335A3A36B034C79B6DEEAE1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk;
-				SYMROOT = /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/build;
-			};
-			name = Release;
-		};
-		272746E8F51545179BCBB5BE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = ("","$(inherited)");
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/rohitkrishnan/CLionProjects/HomeCamRecorder;
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("$(inherited)");
-			};
-			name = Debug;
-		};
-		2FB17C71282E4636A0F76E90 /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk;
-				SYMROOT = /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/build;
-			};
 			name = RelWithDebInfo;
 		};
-		3D4C9776292148D58B8A379E /* MinSizeRel */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk;
-				SYMROOT = /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/build;
-			};
-			name = MinSizeRel;
-		};
-		74BD7D524E884F2C849CDCA3 /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = ("","$(inherited)");
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/rohitkrishnan/CLionProjects/HomeCamRecorder;
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("$(inherited)");
-			};
-			name = RelWithDebInfo;
-		};
-		78708F133673482E9640BA2F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = ("","$(inherited)");
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/rohitkrishnan/CLionProjects/HomeCamRecorder;
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("$(inherited)");
-			};
-			name = Release;
-		};
-		7F4CFE40700F4A88A1ACBC23 /* RelWithDebInfo */ = {
+		2A5D4521B2DB463BB66FE6F2 /* RelWithDebInfo */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -570,7 +426,7 @@ exit 0";
 				HEADER_SEARCH_PATHS = (/usr/local/include,"$(inherited)");
 				INSTALL_PATH = "";
 				OTHER_CPLUSPLUSFLAGS = "-D__STDC_CONSTANT_MACROS        -DNDEBUG '-std=gnu++17' ";
-				OTHER_LDFLAGS = (" -Wl,-search_paths_first -Wl,-headerpad_max_install_names",/usr/local/lib/libavformat.dylib,/usr/local/lib/libavcodec.dylib,/usr/local/lib/libavutil.dylib,/usr/local/lib/libavdevice.dylib,/usr/local/lib/libswresample.dylib,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libm.tbd,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libz.tbd,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libpthread.tbd,/usr/local/lib/libx264.dylib,/usr/local/lib/libx265.dylib,"$(inherited)");
+				OTHER_LDFLAGS = (" -Wl,-search_paths_first -Wl,-headerpad_max_install_names",/usr/local/lib/libavformat.dylib,/usr/local/lib/libavcodec.dylib,/usr/local/lib/libavutil.dylib,/usr/local/lib/libavdevice.dylib,/usr/local/lib/libswresample.dylib,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libm.tbd,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libz.tbd,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libpthread.tbd,/usr/local/lib/libx264.dylib,/usr/local/lib/libx265.dylib,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libcurl.tbd,"$(inherited)");
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = HomeCamRecorder;
 				SECTORDER_FLAGS = "";
@@ -580,7 +436,61 @@ exit 0";
 			};
 			name = RelWithDebInfo;
 		};
-		B07CB69FEDC6486387BE9DCF /* RelWithDebInfo */ = {
+		33EE8D7B191E4F9BBB2193E5 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/rohitkrishnan/CLionProjects/HomeCamRecorder;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		3AD237081431474889093C64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/include,"$(inherited)");
+				INSTALL_PATH = "";
+				OTHER_CPLUSPLUSFLAGS = "-D__STDC_CONSTANT_MACROS    '-std=gnu++17' ";
+				OTHER_LDFLAGS = (" -Wl,-search_paths_first -Wl,-headerpad_max_install_names",/usr/local/lib/libavformat.dylib,/usr/local/lib/libavcodec.dylib,/usr/local/lib/libavutil.dylib,/usr/local/lib/libavdevice.dylib,/usr/local/lib/libswresample.dylib,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libm.tbd,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libz.tbd,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libpthread.tbd,/usr/local/lib/libx264.dylib,/usr/local/lib/libx265.dylib,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libcurl.tbd,"$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = HomeCamRecorder;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/rohitkrishnan/CLionProjects/HomeCamRecorder;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Debug;
+		};
+		49896172029B45059AB76480 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk;
+				SYMROOT = /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/build;
+			};
+			name = MinSizeRel;
+		};
+		682E1D4DE2004303B7E58226 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -598,9 +508,39 @@ exit 0";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = ("$(inherited)");
 			};
-			name = RelWithDebInfo;
+			name = Debug;
 		};
-		B3558A8A1C9D4DFC889A886E /* Debug */ = {
+		71026FEC4D2E402189FADBCC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/rohitkrishnan/CLionProjects/HomeCamRecorder;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Release;
+		};
+		735F0743C7524A9CB0831B3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk;
+				SYMROOT = /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/build;
+			};
+			name = Release;
+		};
+		84324811133E4DA6A5164898 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
@@ -610,7 +550,7 @@ exit 0";
 			};
 			name = Debug;
 		};
-		B3B7D5B66AB24BF6973BFDDC /* Release */ = {
+		88C5ECFA3B5644189A435081 /* MinSizeRel */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -622,31 +562,7 @@ exit 0";
 				INSTALL_PATH = "";
 				OTHER_LDFLAGS = ("","$(inherited)");
 				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ALL_BUILD;
-				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/rohitkrishnan/CLionProjects/HomeCamRecorder;
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("$(inherited)");
-			};
-			name = Release;
-		};
-		BCC780A1840B4F899C476267 /* MinSizeRel */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				EXECUTABLE_PREFIX = "";
-				EXECUTABLE_SUFFIX = "";
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = s;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (/usr/local/include,"$(inherited)");
-				INSTALL_PATH = "";
-				OTHER_CPLUSPLUSFLAGS = "-D__STDC_CONSTANT_MACROS     -DNDEBUG '-std=gnu++17' ";
-				OTHER_LDFLAGS = (" -Wl,-search_paths_first -Wl,-headerpad_max_install_names",/usr/local/lib/libavformat.dylib,/usr/local/lib/libavcodec.dylib,/usr/local/lib/libavutil.dylib,/usr/local/lib/libavdevice.dylib,/usr/local/lib/libswresample.dylib,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libm.tbd,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libz.tbd,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libpthread.tbd,/usr/local/lib/libx264.dylib,/usr/local/lib/libx265.dylib,"$(inherited)");
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = HomeCamRecorder;
+				PRODUCT_NAME = ZERO_CHECK;
 				SECTORDER_FLAGS = "";
 				SYMROOT = /Users/rohitkrishnan/CLionProjects/HomeCamRecorder;
 				USE_HEADERMAP = NO;
@@ -654,7 +570,7 @@ exit 0";
 			};
 			name = MinSizeRel;
 		};
-		FF5DE069BD4847149E698808 /* Release */ = {
+		A80F633322354FB181E58141 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -668,7 +584,7 @@ exit 0";
 				HEADER_SEARCH_PATHS = (/usr/local/include,"$(inherited)");
 				INSTALL_PATH = "";
 				OTHER_CPLUSPLUSFLAGS = "-D__STDC_CONSTANT_MACROS     -DNDEBUG '-std=gnu++17' ";
-				OTHER_LDFLAGS = (" -Wl,-search_paths_first -Wl,-headerpad_max_install_names",/usr/local/lib/libavformat.dylib,/usr/local/lib/libavcodec.dylib,/usr/local/lib/libavutil.dylib,/usr/local/lib/libavdevice.dylib,/usr/local/lib/libswresample.dylib,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libm.tbd,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libz.tbd,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libpthread.tbd,/usr/local/lib/libx264.dylib,/usr/local/lib/libx265.dylib,"$(inherited)");
+				OTHER_LDFLAGS = (" -Wl,-search_paths_first -Wl,-headerpad_max_install_names",/usr/local/lib/libavformat.dylib,/usr/local/lib/libavcodec.dylib,/usr/local/lib/libavutil.dylib,/usr/local/lib/libavdevice.dylib,/usr/local/lib/libswresample.dylib,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libm.tbd,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libz.tbd,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libpthread.tbd,/usr/local/lib/libx264.dylib,/usr/local/lib/libx265.dylib,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libcurl.tbd,"$(inherited)");
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = HomeCamRecorder;
 				SECTORDER_FLAGS = "";
@@ -678,49 +594,143 @@ exit 0";
 			};
 			name = Release;
 		};
+		AE91705464DF49C48A5F86ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/rohitkrishnan/CLionProjects/HomeCamRecorder;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Release;
+		};
+		D2FAAAA758604A269DDCF080 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/include,"$(inherited)");
+				INSTALL_PATH = "";
+				OTHER_CPLUSPLUSFLAGS = "-D__STDC_CONSTANT_MACROS     -DNDEBUG '-std=gnu++17' ";
+				OTHER_LDFLAGS = (" -Wl,-search_paths_first -Wl,-headerpad_max_install_names",/usr/local/lib/libavformat.dylib,/usr/local/lib/libavcodec.dylib,/usr/local/lib/libavutil.dylib,/usr/local/lib/libavdevice.dylib,/usr/local/lib/libswresample.dylib,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libm.tbd,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libz.tbd,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libpthread.tbd,/usr/local/lib/libx264.dylib,/usr/local/lib/libx265.dylib,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libcurl.tbd,"$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = HomeCamRecorder;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/rohitkrishnan/CLionProjects/HomeCamRecorder;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		DD4F0764ED3E48C68F3EFFD8 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk;
+				SYMROOT = /Users/rohitkrishnan/CLionProjects/HomeCamRecorder/build;
+			};
+			name = RelWithDebInfo;
+		};
+		DF4CB79F799A45FFB3115D77 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/rohitkrishnan/CLionProjects/HomeCamRecorder;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		F618F0DA744C4529A07C69D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/rohitkrishnan/CLionProjects/HomeCamRecorder;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4E7E191ADC314F17A2A4C118 /* Build configuration list for PBXNativeTarget "HomeCamRecorder" */ = {
+		79E9A7721BBF4F12909B17B4 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0DA83CD4300B43F6A68B7517 /* Debug */,
-				FF5DE069BD4847149E698808 /* Release */,
-				BCC780A1840B4F899C476267 /* MinSizeRel */,
-				7F4CFE40700F4A88A1ACBC23 /* RelWithDebInfo */,
+				682E1D4DE2004303B7E58226 /* Debug */,
+				AE91705464DF49C48A5F86ED /* Release */,
+				DF4CB79F799A45FFB3115D77 /* MinSizeRel */,
+				226C8BC5FE4943129BD22F7E /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		54DBBAB2D6F245E587F3A113 /* Build configuration list for PBXProject "HomeCamRecorder" */ = {
+		8AE1343F785449C88CA8CDCC /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B3558A8A1C9D4DFC889A886E /* Debug */,
-				2335A3A36B034C79B6DEEAE1 /* Release */,
-				3D4C9776292148D58B8A379E /* MinSizeRel */,
-				2FB17C71282E4636A0F76E90 /* RelWithDebInfo */,
+				F618F0DA744C4529A07C69D3 /* Debug */,
+				71026FEC4D2E402189FADBCC /* Release */,
+				88C5ECFA3B5644189A435081 /* MinSizeRel */,
+				33EE8D7B191E4F9BBB2193E5 /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		89BA6DBB3BF8414BB0B4C5E5 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+		8BFC94B256F246A29D024166 /* Build configuration list for PBXProject "HomeCamRecorder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				272746E8F51545179BCBB5BE /* Debug */,
-				78708F133673482E9640BA2F /* Release */,
-				1235263FCD7B4E698826D872 /* MinSizeRel */,
-				74BD7D524E884F2C849CDCA3 /* RelWithDebInfo */,
+				84324811133E4DA6A5164898 /* Debug */,
+				735F0743C7524A9CB0831B3A /* Release */,
+				49896172029B45059AB76480 /* MinSizeRel */,
+				DD4F0764ED3E48C68F3EFFD8 /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		C3A6D48CD438419782ED4115 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+		F5D7EA58F0A949DDB0DBCFF5 /* Build configuration list for PBXNativeTarget "HomeCamRecorder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1A0A1C35E8C1444F8C9976CF /* Debug */,
-				B3B7D5B66AB24BF6973BFDDC /* Release */,
-				01CDC7B9923440F2855BF82B /* MinSizeRel */,
-				B07CB69FEDC6486387BE9DCF /* RelWithDebInfo */,
+				3AD237081431474889093C64 /* Debug */,
+				A80F633322354FB181E58141 /* Release */,
+				D2FAAAA758604A269DDCF080 /* MinSizeRel */,
+				2A5D4521B2DB463BB66FE6F2 /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

@@ -102,8 +102,8 @@ void SummaryGenerator::add_video(RotatingFileMuxer *muxer,
         input_timebase_per_stream[1] = input_audio_stream->time_base;
     }
     
-    const long BUFFER_TIME_BEFORE_MS = 10000;
-    const long BUFFER_TIME_AFTER_MS = 5000;
+    const long BUFFER_TIME_BEFORE_MS = 3000;
+    const long BUFFER_TIME_AFTER_MS = 3000;
     
     long next_motion_timestamp_video = -1;
     long next_motion_timestamp_audio = -1;
