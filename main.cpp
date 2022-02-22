@@ -79,10 +79,10 @@ std::vector<CameraSource> cameras = { // NOLINT(cert-err58-cpp)
                  create_muxers(RECORDINGS_DIR + "/front_door", "flv",
                                "rtmp://localhost/flv/1"),
                  RECORDINGS_DIR, "front_door", 35000),
-    //        CameraSource("Back yard", "rtsp://admin:2147483648@10.0.9.26/live/ch0",
-    //                     create_muxers(RECORDINGS_DIR + "/back_yard", "flv",
-    //                                   "rtmp://localhost/flv/2"),
-    //                    RECORDINGS_DIR, "back_yard", 30000),
+    CameraSource("Back yard", "rtsp://admin:2147483648@10.0.9.26/live/ch0",
+                create_muxers(RECORDINGS_DIR + "/back_yard", "flv",
+                                "rtmp://localhost/flv/2"),
+                RECORDINGS_DIR, "back_yard", 30000),
     CameraSource("Driveway", "rtsp://admin:2147483648@10.0.9.32/live/ch0",
                  create_muxers(RECORDINGS_DIR + "/driveway", "flv",
                                "rtmp://localhost/flv/3"),
@@ -382,12 +382,12 @@ int main(int argc, char* argv[]) {
     if (!run_summary) {
         thread camera1(run, 0);
         thread camera2(run, 1);
-        //        thread camera3(run, 2);
+        thread camera3(run, 2);
         thread frame_rate_monitor(monitor_frame_rates);
         frame_rate_monitor.join();
         camera1.join();
         camera2.join();
-        //        camera3.join();
+        camera3.join();
     } else {
         cout << "Generating summary" << endl;
         generate_summaries();
