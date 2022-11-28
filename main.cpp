@@ -129,7 +129,7 @@ void sigpipe_handler(int sig) {
 void run(int index) {
     CameraSource &source = cameras.at(index);
     int fail_count = 0;
-    
+     
     do {
         source.last_frame_read_start_time = system_clock::now();
         source.needs_restart = false;
@@ -148,7 +148,9 @@ void run(int index) {
         
         try {
             int ret;
-            ret = avformat_open_input(&input_ctx, source.url.c_str(), nullptr, nullptr);
+            AVDictionary *options = NULL;
+            av_dict_set(&options, "rtsp_transport", "udp", 0);
+            ret = avformat_open_input(&input_ctx, source.url.c_str(), nullptr, &options);
             if (ret < 0) {
                 cerr << "(" << source.name << ") Failed to open " << source.url << ". Error = " << av_err2str(ret) << endl;
                 throw ret;
@@ -211,8 +213,6 @@ void run(int index) {
         
         cout << "(" << source.name << ") Starting playback loop." << endl;
 
-        send_sms(source.name + " camera is active");
-        
         long video_packet_count = 0;
         try {
             while (!kill_threads && !source.needs_restart) {
@@ -258,6 +258,9 @@ void run(int index) {
                 if (packet->stream_index == video_stream_idx) {
                     video_packet_count++;
                     if (video_packet_count > 30) {
+                        if (fail_count > 1) {
+                          send_sms(source.name + " camera is active again");
+                        }
                         fail_count = 0;
                     }
                 }
